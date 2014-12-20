@@ -1,0 +1,16 @@
+ $hasils = DB::table('borrows')
+            ->join('borrow_details', 'borrows.id', '=', 'borrow_details.borrow_id')
+            ->where('borrow_details.denda', '>', 0)
+            ->where('borrow_details.tgl_kembali', 'LIKE', '%'.$bulan.'%')
+            ->order_by('borrow_details.updated_at','desc')     
+            ->paginate('15'); 
+        $dendabulanan = DB::table('borrows')
+            ->join('borrow_details', 'borrows.id', '=', 'borrow_details.borrow_id')
+            ->where('borrow_details.denda', '>', 0)
+            ->where('borrow_details.tgl_kembali', 'LIKE', '%'.$bulan.'%') 
+            ->sum('borrow_details.denda'); 
+        $adadenda = DB::table('borrows')
+            ->join('borrow_details', 'borrows.id', '=', 'borrow_details.borrow_id')
+            ->where('borrow_details.denda', '>', 0)
+            ->where('borrow_details.tgl_kembali', 'LIKE', '%'.$bulan.'%') 
+            ->count();     

@@ -1,0 +1,22 @@
+Ketika menggunakan fluent, count harus berdasarkan join juga
+##Contoh
+$riwayat = DB::table('borrows')
+            ->join('borrow_details', 'borrows.id', '=', 'borrow_details.borrow_id')
+            ->where('borrow_details.book_id','=',$nib)
+            ->order_by('borrow_details.tgl_pinjam')   
+            ->paginate('15');
+$jumlah = DB::table('borrows')
+            ->join('borrow_details', 'borrows.id', '=', 'borrow_details.borrow_id')
+            ->where('borrow_details.book_id','=',$nib)
+            ->order_by('borrow_details.tgl_pinjam')   
+            ->count();    
+
+Ketika menggunakan raw atau SQL biasa, count cuman tinggal count variabelnya.
+##Contoh
+$hasils = DB::
+        query('select member_id,borrows.id as id_pinjam,
+               borrow_details.id as id_detail,book_id,
+               tgl_pinjam, tgl_kembali, status,denda  from 
+               borrow_details left join borrows on borrow_details.borrow_id = borrows.id
+               where denda!=0 order by tgl_kembali asc');
+$jumlah=count($hasils);

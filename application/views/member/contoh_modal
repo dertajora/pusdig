@@ -1,0 +1,72 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="myModalLabel">Tambah Pemilih</h4>
+
+            </div>
+            <div class="modal-body">
+              <form action="members/create" method="POST">
+              <center>
+              <table>
+                
+              <tr>  
+              <td>  
+              Nama
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="text" name="nama"/><br /></td></tr>
+              <tr>
+              <td>
+              Kelamin </td>
+              <td>  
+              : 
+              </td>
+              <td>
+                <input type="text" name="kelamin"/>
+                </td>
+              </tr>
+              <tr>  
+              <td>  
+              Tempat Lahir
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="text" name="tempat_lahir"/></td></tr>
+              <tr>  
+              <td>  
+              Tanggal Lahir
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="date" name="tgl_lahir"/><br /></td></tr> 
+              <tr>  
+              <td>  
+              Alamat
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><textarea name="alamat"></textarea><br /></td></tr>
+              <tr>  
+              <td>  
+              Status
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="text" name="status"/><br /></td></tr>
+              </table>
+              </center>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal">Close</button>
+              <input class="btn btn-primary" type="submit" value="Create"/>
+              </form>
+            </div>
+          </div>
+          

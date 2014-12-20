@@ -1,0 +1,510 @@
+//Add book
+
+{{Form::open('books/update/'.$book->id,'POST',array('data-validate' => 'parsley'))}}
+</center>
+
+<table align="center">
+
+      <tr>
+        <td>
+          {{ Form::label('judul', 'NIB'); }}
+        </td>
+        <td>
+          {{ Form::text('nib',$book->id)}} 
+          
+        </td>
+        <td>
+              @if($errors->has('nib'))
+
+              <div class="alert alert-error">
+              {{$errors->first('nib', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+
+
+      <tr>
+        <td>
+          {{ Form::label('judul', 'Judul Buku'); }}
+        </td>
+        <td>
+          {{ Form::text('judul',$book->judul);}} 
+        </td>
+        <td>
+              @if($errors->has('judul'))
+
+              <div class="alert alert-error">
+              {{$errors->first('judul', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+      <tr>  
+              <td>  
+              Tanggal Terima
+              </td>
+              
+              <td>{{ Form::date('tgl_terima',$book->tgl_terima);}} <br /></td>
+
+              <td>
+              @if($errors->has('tgl_terima'))
+
+              <div class="alert alert-error">
+              {{$errors->first('tgl_terima', ':message')}}
+              </div>  
+              </td>
+              @endif
+              </tr> 
+      <tr>
+        <td>
+          {{ Form::label('pengarang', 'Pengarang'); }}
+        </td>
+        <td>
+          {{ Form::text('pengarang',$book->pengarang);}} 
+        </td>
+        <td>
+              @if($errors->has('pengarang'))
+
+              <div class="alert alert-error">
+              {{$errors->first('pengarang', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+      <tr>  
+              <td>  
+              Penerbit
+              </td>
+          
+              <td>{{ Form::text('penerbit',$book->penerbit);}} </td>
+              <td>
+              @if($errors->has('penerbit'))
+
+              <div class="alert alert-error">
+              {{$errors->first('penerbit', ':message')}}
+              </div>  
+              </td>
+              @endif
+              
+              </tr>
+              <tr>
+        <td>
+          {{ Form::label('kelas', 'Kelas'); }}
+        </td>
+        <td>
+          {{ Form::text('kelas',$book->kelas);}} 
+        </td>
+        <td>
+              @if($errors->has('kelas'))
+
+              <div class="alert alert-error">
+              {{$errors->first('kelas', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+      <tr>
+        <td>
+          {{ Form::label('ddc', 'Kode DDC'); }}
+        </td>
+        <td>
+          {{ Form::text('ddc',$book->ddc);}} 
+        </td>
+        <td>
+              @if($errors->has('ddc'))
+
+              <div class="alert alert-error">
+              {{$errors->first('ddc', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+
+      <tr>
+        <td>
+          {{ Form::label('sumber', 'Sumber'); }}
+        </td>
+        <td>
+          {{ Form::text('sumber',$book->sumber);}} 
+        </td>
+            <td>
+              @if($errors->has('sumber'))
+
+              <div class="alert alert-error">
+              {{$errors->first('sumber', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+
+      <tr>
+        <td>
+          {{ Form::label('halaman', 'Halaman'); }}
+        </td>
+        <td>
+          {{ Form::text('halaman',$book->jml_halaman);}} 
+        </td>
+            <td>
+              @if($errors->has('halaman'))
+
+              <div class="alert alert-error">
+              {{$errors->first('halaman', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+
+      <tr>
+        <td>
+          {{ Form::label('halaman', 'Ukuran'); }}
+        </td>
+        <td>
+          {{ Form::text('halaman',$book->ukuran);}} 
+        </td>
+            <td>
+              @if($errors->has('ukuran'))
+
+              <div class="alert alert-error">
+              {{$errors->first('ukuran', ':message')}}
+              </div>  
+              </td>
+              @endif
+      </tr>
+
+      <tr>  
+              <td>  
+              Kategori
+              </td>
+              <td> 
+              <select name="type_id">
+                <option></option>
+                <option value="1">Fiksi</option>
+                <option value="2">Non Fiksi</option>
+                <option value="3">Referensi</option>
+                <option value="4">Pegangan Guru</option>
+                <option value="5">Buku Pelajaran</option>
+           
+               </select></td> 
+                <td>
+              @if($errors->has('type_id'))
+
+              <div class="alert alert-error">
+              {{$errors->first('type_id', ':message')}}
+              </div>  
+              </td>
+              @endif
+
+               </tr>
+
+              
+</table>
+<table class="table table-bordered table-striped table-hover">
+
+     
+        <thead>
+           <tr>
+           <th align="center" class="btn-info" colspan="10">
+            <center>
+             {{ Form::submit('&nbsp; &nbsp; Update &nbsp; &nbsp;', array('class' => 'btn btn-primary')) }}
+            </center>
+           </th>
+          
+          
+            </tr>
+         </thead>
+</table>
+
+
+
+<!--<input type="submit" name="add_author" value="Update"/>-->
+</center>
+{{ Form::close(); }}
+
+//Error message
+@layout('template.main')
+@section('content')
+
+
+</script>
+<script type="text/javascript">
+$(function() {
+$('.password').pstrength();
+});
+</script>
+
+<h3 align="center">Halaman Tambah User</h3> 
+
+<table class="table table-bordered table-striped table-hover">
+
+     
+        <thead>
+           <tr>
+           <th align="center" class="btn-info" colspan="10">
+              
+              <a data-toggle="modal" href="/users" class="btn btn-warning">
+              <i class="icon-pencil icon-white"></i>&nbsp&nbspDaftar User</a>  
+              
+           </th>
+          
+          
+            </tr>
+         </thead>
+</table>
+
+
+
+{{Form::open('users/create','POST',array('data-validate' => 'parsley'))}}
+
+              <center>
+              <table>
+                
+              <tr>  
+              <td>  
+              Nama
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="text" name="nama" data-required="true"/><br /></td>
+              <td>
+              @if($errors->has('nama'))
+
+              <div class="alert alert-error">
+              {{$errors->first('nama', ':message')}}
+              </div>  
+              </td>
+              @endif
+              </tr>
+              <tr>
+              <td>
+              Username </td>
+              <td>  
+              : 
+              </td>
+              <td>
+                <input type="text" name="username" data-required="true" data-minlength="6"/>
+                </td>
+              <td>
+              @if($errors->has('username'))
+
+              <div class="alert alert-error">
+              {{$errors->first('username', ':message')}}
+              </div>  
+              </td>
+              @endif
+              </tr>
+              <tr>  
+              <td>  
+              Password
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input id="foo" class="password" type="password" name="password" data-minlength="6"/></td>
+              <td>
+              @if($errors->has('password'))
+
+              <div class="alert alert-error">
+              {{$errors->first('password', ':message')}}
+              </div>  
+              </td>
+              @endif
+              </tr>
+
+              <tr>  
+              <td>  
+              Ulang Password
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input id="foo" class="password" type="password" data-equalto="#foo"/></td>
+              <td>
+              @if($errors->has('password'))
+
+              <div class="alert alert-error">
+              {{$errors->first('password', ':message')}}
+              </div>  
+              </td>
+              @endif
+              </tr>
+              
+              <tr>  
+              <td>  
+              Jabatan
+              </td>
+              <td>  
+              : 
+              </td>
+              <td>
+              <select name="role_id" data-required="true">
+                <option></option>
+                <option value="1">Administrator</option>
+                <option value="2">Pustakawan</option>
+                <option value="3">Operator</option>
+           
+               </select></td> 
+                <td>
+              @if($errors->has('role_id'))
+
+              <div class="alert alert-error">
+              {{$errors->first('role_id', ':message')}}
+              </div>  
+              </td>
+              @endif
+
+               </tr>
+              </table>
+              </center>
+              <table class="table table-bordered table-striped table-hover">
+
+     
+              <thead>
+              <tr>
+              <th align="center" class="btn-info" colspan="10">
+              <center>
+              {{ Form::submit('&nbsp; &nbsp; Create &nbsp; &nbsp;', array('class' => 'btn btn-primary')) }}
+              </center>
+              </th>
+          
+          
+              </tr>
+              </thead>
+              </table>
+
+             <!-- <input type="submit" name="add_author" value="Create"/> -->
+
+              
+             {{Form::close()}}
+
+
+@endsection
+
+Syntax MySQL
+SELECT * FROM borrow_details left join borrows on borrow_details.borrow_id=borrows.id where member_id='1'
+
+SELECT member_id, borrows.id as id_pinjam,borrow_details.id,tgl_pinjam FROM borrow_details left join borrows on borrow_details.borrow_id=borrows.id where member_id='1'
+
+latian join table
+<?php Agak benar ?>
+SELECT member_id, borrows.id as id_pinjam,borrow_details.id as id_detail,tgl_pinjam,status,denda FROM borrow_details left join borrows on borrow_details.borrow_id=borrows.id where member_id='1' && status='kembali'
+
+<?php Nyaris Benar?> join table
+SELECT member_id, borrows.id as id_pinjam,borrow_details.id as id_detail,book_id,tgl_pinjam,status,denda FROM borrow_details left join borrows on borrow_details.borrow_id=borrows.id where member_id='26' && status!='kembali'
+
+latihan join table
+SELECT member_id, borrows.id as id_pinjam,borrow_details.id as id_detail,book_id,tgl_pinjam,status,denda FROM borrow_details left join borrows on borrow_details.borrow_id=borrows.id where member_id='26' 
+
+latihan join table with laravel
+$hasils = DB::query('select * from borrow_details left join borrows on borrow_details.borrow_id = borrows.id');
+
+ini untuk between pada mysql
+SELECT * FROM borrow_details WHERE tgl_pinjam BETWEEN '2013-04-22' AND '2013-05-20' ORDER BY id DESC
+
+ // ini untuk tombol tombol
+<center><a class="btn btn-info btn-small disabled" href="/transactions/proses_bebas">
+           <i class="icon-edit icon-white"></i>Kembali</a>
+ {{ Form::submit('&nbsp; &nbsp; Create &nbsp; &nbsp;', array('class' => 'btn btn-primary disabled')) }}
+{{ HTML::link('transactions/proses_bebas', 'Proses Bebas', array('class' => 'btn btn-primary disabled')) }}
+  /* untuk menginsert row dengan eager loading
+        Member::find($cek)->borrows()->insert(array(
+        'tgl_pinjam' => '1998-30-5'
+        )); 
+
+         $most = Borrow::max('id');
+
+
+        Borrow::find($most)->details()->insert(array(
+        'book_id' => '4000',
+        'status' => 'Kembali',
+        'denda' => '0',
+        )); 
+        */
+
+ini urusannya sama tanggal
+
+<?php  
+date_default_timezone_set("UTC");
+$waktu_tujuan = mktime(2012,9,20);
+$waktu_sekarang = mktime(date('Y'),date('m'),date('d'));
+
+echo 'selisih waktu : ';
+
+
+$today = date("Y-m-d");  
+echo date("Y-m-d H:i:s");  
+echo "<br>";
+echo $today;
+?>  
+<br>
+<?php
+$now_date=strtotime("now");
+echo "date now : ";
+echo date('Y-m-d H:i:s',$now_date);
+?>
+
+
+<form action="books/create" method="POST">
+              <center>
+              <table>
+                
+              <tr>  
+              <td>  
+              Keyword
+              </td>
+              <td>  
+              : 
+              </td>
+              <td><input type="text" name="keyword"/><br /></td></tr>
+              <tr>
+              <td>
+              Cari Berdasar </td>
+              <td>  
+              : 
+              </td>
+              <td>
+                <label class="radio">
+                <input type="radio" name="key" id="optionsRadios1" value="pengarang" checked>Pengarang
+              </label>
+                <label class="radio">
+                <input type="radio" name="key" id="optionsRadios1" value="judul">Judul
+                </label>
+                <label class="radio">
+                <input type="radio" name="key" id="optionsRadios1" value="judul">Penerbit
+                </label>
+                <label class="radio">
+                <input type="radio" name="key" id="optionsRadios1" value="judul">Judul
+                </label>
+              </td>
+              <td></td>
+               </tr>
+               <tr> 
+                <td>Ditampilkan</td>
+                <td>:</td>
+                <Td>
+                <select name="role_id">
+                <option></option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+           
+                </select></td>  
+                <td>Buku perhalaman</td>
+              </td>
+              </tr>
+            </table>
+          </form>
+          <label class="checkbox">
+  <input type="checkbox" value="">
+  Option one is this and that—be sure to include why it's great
+</label>
+ 
+<label class="radio">
+  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+  Option one is this and that—be sure to include why it's great
+</label>
+<label class="radio">
+  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+  Option two can be something else and selecting it will deselect option one
+</label>

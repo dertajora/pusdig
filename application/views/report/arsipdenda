@@ -1,0 +1,88 @@
+<tr>
+         
+        
+          <td>{{ $hasil->member_id }}</td>
+          <td>{{ $hasil->book_id }}</td>
+          
+          <?php  
+           
+           $buku=$hasil->book_id;
+           
+           $judul = DB::table('books')->where('id','=',$buku)->only('judul');
+           
+           ?>
+          <td> <?php echo $judul ;?> </td>
+          
+          <td> <?php $tanggal_data = $hasil->tgl_pinjam; 
+                   
+                    $pieces = explode("-", $tanggal_data);
+                    echo "$pieces[2] / $pieces[1] / $pieces[0]";
+                  ?></td>
+          <td> <?php $tgl_kembali = $hasil->tgl_kembali;
+                  $status_buku = $hasil->status;
+              if ($tgl_kembali == '0000-00-00'){
+                echo 'Belum Kembali';
+              } elseif ($status_buku == 'Hilang'){
+                echo "Buku Hilang";
+              }
+              elseif ($tgl_kembali != '0000-00-00'){
+                $pieces = explode("-", $tgl_kembali);
+                echo "$pieces[2] / $pieces[1] / $pieces[0]";
+              }
+              ?>
+              </td>
+          <?php $denda = 0;    
+            $borrow_date = $hasil->tgl_pinjam;
+            $return_date = $hasil->tgl_kembali;
+            $selisih = datediff($borrow_date,$return_date);
+            $telat = $selisih-7;
+            if ($telat <= 0){
+                $telat = 0;
+            }
+            $dendasementara = $telat * 100;
+            $denda = $denda + $dendasementara;
+            
+            $tes=$denda;
+            $fontopen='';
+            $fontclose='';
+            if($tes>0){
+              $fontopen="<font color='#ff0000'><b>";
+              $fontclose="</b></font>";
+            }
+          ?>
+           <?php $tes_status=$hasil->status;
+
+                $tes_status = $hasil->status;
+                if($tes_status =='Hilang'){
+                  $status='Hilang';
+                }
+                elseif ($tgl_kembali == null){
+                 $status='Dipinjam';
+                } elseif ($tes_status == 'Perpanjang' ){
+                  $status='Perpanjang';
+                } elseif ($tgl_kembali != null){
+                  $status='Kembali';
+                }
+                $status_open='';
+                $status_close='';
+                if($tes_status== 'Kembali'){
+                  $status_open="<font color='green'><b>";
+                  $status_close="</b></font>";
+                } elseif ($tes_status== 'Perpanjang'){
+                  $status_open="<font color='#33bafe'><b>";
+                  $status_close="</b></font>";
+                }
+                elseif ($tes_status== 'Hilang'){
+                  $status_open="<font color='red'><b>";
+                  $status_close="</b></font>";
+                }
+              ?>
+              
+              <td><?php echo $status_open; ?>{{ $status }}<?php echo $status_close; ?>
+          
+         
+          <td><?php echo $fontopen; ?>{{ $denda}}<?php echo $fontclose; ?></td>
+       
+          
+          
+        </tr>

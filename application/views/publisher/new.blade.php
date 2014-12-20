@@ -1,0 +1,1 @@
+This is the C:\xampp\htdocs\pusdig\application\views/publisher/new.blade.php view
